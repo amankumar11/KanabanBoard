@@ -1,0 +1,18 @@
+.main {
+    height: min-content;
+    width: 100vw;
+    padding: 1rem 2rem;
+}
+
+.main-columns-container {
+    min-height: min-content;
+    height: 100%;
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-title{
+    color: white;
+}
