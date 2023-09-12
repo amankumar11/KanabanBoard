@@ -1,6 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+body {
+  background-color: #062857;
+}
+
 .App {
-    background-color: #027BB2;
-    display: flex;
-    align-items: center;
-    height: min-content;
+  display: flex;
+  align-items: center;
+  height: min-content;
+  font-family: "Poppins", sans-serif;
 }
