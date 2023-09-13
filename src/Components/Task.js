@@ -20,7 +20,6 @@ const Task = (props) => {
         >
           {isEditing ? (
             <EditForm
-              color={props.color}
               editTask={props.editTask}
               taskId={props.task.id}
               toggle={toggle}

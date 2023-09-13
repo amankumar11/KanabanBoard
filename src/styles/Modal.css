@@ -9,7 +9,10 @@
 }
 
 .Modal-content {
-  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
   background: black;
   color: #9bb5b0;
   border-radius: 10px;
@@ -21,18 +24,14 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 99;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
 }
 
 .Modal-close-btn:before {
+  position: absolute;
   content: "x";
   color: white;
   font-weight: 300;
   font-family: Arial, sans-serif;
-  position: absolute;
   right: 20px;
   top: 10px;
   cursor: pointer;

@@ -1,20 +1,27 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { columnsRawData } from "../Data/Data";
 import Column from "../Components/Column";
 import "../styles/main.css";
 import Modal from "../Components/Modal";
 import { DragDropContext } from "react-beautiful-dnd";
 import Navbar from "../Components/Navbar";
+import Error from "../Components/Error";
 
 const Mainpage = () => {
   const [columns, setColumns] = useState(columnsRawData);
   const [modal, setModal] = useState(false);
+  const [error, setError] = useState(null);
+
+  const clearError = () => {
+    setError(null);
+  };
 
   const onDragEnd = (result) => {
     const { destination, source } = result;
 
     if (!destination) {
-      console.log("no destination");
+      setError("This is not a valid destination");
+      setTimeout(clearError, 3000);
       return;
     }
 
@@ -22,7 +29,8 @@ const Mainpage = () => {
       destination.droppableId === source.droppableId &&
       destination.index === source.index
     ) {
-      console.log("index and destination the same");
+      setError("Index and destination are same");
+      setTimeout(clearError, 3000);
       return;
     }
 
@@ -46,25 +54,23 @@ const Mainpage = () => {
       const newColumnsState2 = [...newColumnsState];
       setColumns(newColumnsState2);
     } else {
-      if (finish.taskIds.length < finish.limit) {
-        const startTaskIds = Array.from(start.taskIds);
-        const [item] = startTaskIds.splice(source.index, 1);
+      const startTaskIds = Array.from(start.taskIds);
+      const [item] = startTaskIds.splice(source.index, 1);
 
-        const finishTaskIds = Array.from(finish.taskIds);
-        finishTaskIds.splice(destination.index, 0, item);
+      const finishTaskIds = Array.from(finish.taskIds);
+      finishTaskIds.splice(destination.index, 0, item);
 
-        const newColumnsState = columns.map((c) => {
-          if (c.id === start.id) {
-            c.taskIds = startTaskIds;
-            return c;
-          } else if (c.id === finish.id) {
-            c.taskIds = finishTaskIds;
-            return c;
-          } else return c;
-        });
-        const newColumnsState2 = [...newColumnsState];
-        setColumns(newColumnsState2);
-      } else return;
+      const newColumnsState = columns.map((c) => {
+        if (c.id === start.id) {
+          c.taskIds = startTaskIds;
+          return c;
+        } else if (c.id === finish.id) {
+          c.taskIds = finishTaskIds;
+          return c;
+        } else return c;
+      });
+      const newColumnsState2 = [...newColumnsState];
+      setColumns(newColumnsState2);
     }
   };
 
@@ -80,7 +86,7 @@ const Mainpage = () => {
   const addTask = (newTask) => {
     setModal(false);
     const updatedColumns = columns.map((column) => {
-      if (column.id === newTask.idColumn && column.taskIds.length < 5) {
+      if (column.id === newTask.idColumn) {
         column.taskIds.push(newTask);
         return column;
       } else return column;
@@ -143,6 +149,7 @@ const Mainpage = () => {
           </div>
         </div>
       </DragDropContext>
+      {error && <Error error={error} />}
     </>
   );
 };

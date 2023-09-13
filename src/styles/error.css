@@ -1,0 +1,15 @@
+.error-alert {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  background-color: #f44336;
+  color: white;
+  width: 250px;
+  height: 70px;
+  border-radius: 10px;
+}

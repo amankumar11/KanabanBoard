@@ -40,12 +40,7 @@ const EditForm = (props) => {
           required
         ></input>
       </div>
-      <button
-        className="EditForm-btn"
-        style={{ backgroundColor: `${props.color}` }}
-      >
-        Save
-      </button>
+      <button className="EditForm-btn">Save</button>
     </form>
   );
 };

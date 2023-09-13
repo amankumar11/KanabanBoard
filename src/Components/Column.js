@@ -24,7 +24,6 @@ const Column = (props) => {
                     key={task.id}
                     id={task.id}
                     task={task}
-                    color={props.columnData.color}
                     index={index}
                     removeTask={props.removeTask}
                     editTask={props.editTask}
@@ -40,7 +39,6 @@ const Column = (props) => {
         <div
           className="Column-btn-add"
           onClick={() => props.openModal(props.columnData)}
-          disabled={props.columnData.taskIds.length >= 5 ? true : false}
         >
           + Add a Task
         </div>
