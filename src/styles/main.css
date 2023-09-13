@@ -1,18 +1,29 @@
 .main {
-    height: min-content;
-    width: 100vw;
-    padding: 1rem 2rem;
+  height: min-content;
+  width: 100vw;
+  padding: 1rem 2rem;
 }
 
 .main-columns-container {
-    min-height: min-content;
-    height: 100%;
-    margin: 2rem 0;
-    display: flex;
-    justify-content: center;
-    align-items:self-start;
+  min-height: min-content;
+  height: 100%;
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: self-start;
 }
 
-.main-title{
-    color: white;
+.main-title {
+  color: white;
+}
+
+.add-sec-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  color: #9bb5b0;
+  background-color: #101204;
 }

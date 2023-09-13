@@ -146,6 +146,7 @@ const Mainpage = () => {
                 />
               );
             })}
+            <div className="add-sec-btn">+</div>
           </div>
         </div>
       </DragDropContext>
