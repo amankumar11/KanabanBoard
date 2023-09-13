@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/Modal.css";
-import useInputState from "../hooks/useInputState";
+import useInputState from "../utils/useInputState";
 import { v4 as uuidv4 } from "uuid";
 
 const Modal = (props) => {

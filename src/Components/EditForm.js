@@ -1,5 +1,5 @@
 import React from "react";
-import useInputState from "../hooks/useInputState";
+import useInputState from "../utils/useInputState";
 import "../styles/EditForm.css";
 
 const EditForm = (props) => {

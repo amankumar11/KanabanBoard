@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/Task.css";
 import { Draggable } from "react-beautiful-dnd";
-import useToggle from "../hooks/useToggleState";
+import useToggle from "../utils/useToggleState";
 import EditForm from "./EditForm";
 import Edit from "../assets/edit.svg";
 import Delete from "../assets/delete.svg";
