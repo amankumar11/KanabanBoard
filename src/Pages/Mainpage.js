@@ -8,7 +8,14 @@ import Navbar from "../Components/Navbar";
 import Error from "../Components/Error";
 
 const Mainpage = () => {
-  const [columns, setColumns] = useState(columnsRawData);
+  const [columns, setColumns] = useState(
+    JSON.parse(localStorage.getItem("columnsRawData")) || columnsRawData
+  );
+
+  const localStorageHandler = (updatedColumns) => {
+    localStorage.setItem("columnsRawData", JSON.stringify(updatedColumns));
+  };
+
   const [modal, setModal] = useState(false);
   const [error, setError] = useState(null);
 
@@ -53,6 +60,7 @@ const Mainpage = () => {
 
       const newColumnsState2 = [...newColumnsState];
       setColumns(newColumnsState2);
+      localStorageHandler(newColumnsState2);
     } else {
       const startTaskIds = Array.from(start.taskIds);
       const [item] = startTaskIds.splice(source.index, 1);
@@ -71,6 +79,7 @@ const Mainpage = () => {
       });
       const newColumnsState2 = [...newColumnsState];
       setColumns(newColumnsState2);
+      localStorageHandler(newColumnsState2);
     }
   };
 
@@ -92,6 +101,7 @@ const Mainpage = () => {
       } else return column;
     });
     setColumns(updatedColumns);
+    localStorageHandler(updatedColumns);
   };
 
   const removeTask = (taskId) => {
@@ -103,6 +113,7 @@ const Mainpage = () => {
       })
       .filter((column) => column.taskIds.length >= 0);
     setColumns(updatedColumns);
+    localStorageHandler(updatedColumns);
   };
 
   const editTask = (taskId, newUser, newText) => {
@@ -119,6 +130,7 @@ const Mainpage = () => {
       });
     });
     setColumns(updatedColumns);
+    localStorageHandler(updatedColumns);
   };
 
   return (
